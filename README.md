@@ -8,11 +8,21 @@ User Story:
 
 As a user I want to be able to:
 
-Login/ create an account (Auth) to give the user a way to be unique in the community like choose an avatar image and unique username
+Login/ create an account (Auth) 
+
+as the user have a way to be unique in the community like choose an avatar image and unique username
 
 Be able to navigate between the login page, a page to add movies, and a page that shows all the movies to talk about.
 
-Be able to make my own reviews, update those reviews and delete reviews, also respond to other user reviews and be able to view other users profiles and add them to a list of people im following so I can interact with the community
+Be able to make my own reviews
+
+Be able to update those reviews 
+
+be able to delete reviews, 
+
+be able to respond to other user reviews 
+
+be able to view other users profiles and add them to a list of people im following on the profile page
 
 Stretch: 
 
