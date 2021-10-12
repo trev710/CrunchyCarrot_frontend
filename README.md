@@ -8,19 +8,42 @@ User Story:
 
 As a user I want to be able to:
 
-Login/ create an account (Auth) to give the user a way to be unique in the community
+Login/ create an account (Auth) to give the user a way to be unique in the community like choose an avatar image and unique username
 
-Be able to navigate between the login page, the home page, and a page that shows all the movies to talk about.
+Be able to navigate between the login page, a page to add movies, and a page that shows all the movies to talk about.
 
-Be able to make my own reviews, update those reviews and delete reviews, also respond to other user reviews and be able to view other users profiles so I can interact with the community
+Be able to make my own reviews, update those reviews and delete reviews, also respond to other user reviews and be able to view other users profiles and add them to a list of people im following so I can interact with the community
 
 Stretch: 
 
-User should be able to send friend request to other users 
+User should be able to send friend request to other users beyond jsut following them
 
 User could potentially digitally rent the movies or at least a fake implementation of it
 
 User can potentially add new movies to the api for other people to review
+
+
+API: I will use a non external api so I can use the CRUD easier
+
+GET/API/Movies: this will get a current list of movies to display on the main page
+
+Review CRUD functions:
+
+Create/api/review should create a new review
+
+show/api/review should show the current reviews
+
+update /api/review should update existing reviews
+
+Destroy/api/review should delete the review from the api
+
+User CRUD functions:
+
+create/api/user should should create a new user profile.
+
+show/api/user should show the current users profils
+
+update/api/user should allow the user to update either password profile picture or username
 
 
 GitHub Repos:
