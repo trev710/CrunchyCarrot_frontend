@@ -33,7 +33,7 @@ Create/api/review should create a new review
 
 show/api/review should show the current reviews
 
-update /api/review should update existing reviews
+update/api/review should update existing reviews
 
 Destroy/api/review should delete the review from the api
 
