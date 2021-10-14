@@ -63,7 +63,7 @@ function App() {
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-            <UserProfile currentUser={currentUser} />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} />
             )
             : 
             <h1>Login to view</h1>
