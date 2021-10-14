@@ -1,0 +1,47 @@
+import React from 'react';
+import { NavLink } from 'react-router-dom';
+import { useHistory } from "react-router-dom";
+
+function NavBar({ currentUser, resetCurrentUser }) {
+
+    const history = useHistory();
+    
+    function handleLogout() {
+        resetCurrentUser(null)
+        history.push("/");
+      }
+
+    return (
+        <div>
+
+<img style={{height: "100px"}} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.clipartkey.com%2Fmpngs%2Fm%2F28-283187_dinosaur-clipart-fat-carrot-cartoon.png&f=1&nofb=1" alt="CC logo"></img>
+          <h1>Crunchy Carrots</h1>
+
+
+          <NavLink to="/" className="nav-link">
+            Home
+          </NavLink>
+        {currentUser ? (
+        <>
+          <NavLink to="/profile" className="nav-link">
+            Profile
+          </NavLink>
+          <button className="logout" onClick={handleLogout}>Log Out</button>
+        </>
+        ) : (
+        <>
+          <NavLink to="/signup" className="nav-link">
+            Signup
+          </NavLink>
+          <NavLink to="/login" className="nav-link">
+          Login
+          </NavLink>
+        </>
+           )
+         }
+
+        </div>
+      );
+}
+
+export default NavBar; 
