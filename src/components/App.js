@@ -18,7 +18,7 @@ function App() {
     <div className="App">
       <header className="App-header">
       <h2>Howdy from the frontend</h2>
-        <p>Edit <code>CrunchyCarror_frontend/src/App.js</code> and save to reload.</p>
+        <p>Edit <code>CrunchyCarrot_frontend/src/App.js</code> and save to reload.</p>
         
       </header>
     </div>
