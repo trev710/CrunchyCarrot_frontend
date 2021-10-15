@@ -8,17 +8,28 @@ import MoviesContainer from "./MoviesContainer";
 import Search from "./Search";
 import Login from './Login';
 import SignUp from './SignUp';
+import MoviePage from './MoviePage';
 
 
 function App() {
   const [moviesState, setMoviesState] = useState([])
+  const [reviews, setReviews] = useState([])
   const [currentUser, setCurrentUser] = useState(null)
   const [search, setSearch] = useState("")
   const [selectedGenre, setSelectedGenre] = useState("")
+  const [selectedRuntime, setSelectedRuntime] = useState(null)
 
+
+  //   function onAddReview(newReview) {
+//     setReviews([...reviews, newReview])
+// }
 
   function handleGenreChange(e) {
     setSelectedGenre(e.target.value)
+  }
+
+  function handleRuntimeChange(e) {
+    setSelectedRuntime(e.target.value)
   }
 
   useEffect(() => {
@@ -27,14 +38,21 @@ function App() {
     .then(data => setMoviesState(data));
   }, [])
 
+  useEffect(() => {
+    fetch('http://localhost:3001/reviews')
+    .then(response => response.json())
+    .then(data => setReviews(data));
+  }, [])
+
 
   const updatedMovies = moviesState.filter((movie) => {
     return movie.title.toLowerCase().includes(search.toLowerCase())
   })
 
-  // function handleReview(id) {
-  //   console.log(id)
-  // }
+  // if (selectedRuntime) {
+  //   moviesState.filter((movie) => {
+  //     return movie.runtime
+  //   })
 
 
   return (
@@ -43,7 +61,7 @@ function App() {
       <Header currentUser={currentUser} resetCurrentUser={setCurrentUser} />
         <Switch>
           <Route path='/signup'>
-            <SignUp />
+          <SignUp setCurrentUser={setCurrentUser} />
           </Route>
           <Route path='/login'>
           <Login setCurrentUser={setCurrentUser} />
@@ -53,21 +71,29 @@ function App() {
               <>
              <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
              <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
-            <RuntimeFilter />
-            <MoviesContainer movies={updatedMovies} selectedGenre={selectedGenre}  />
+             <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
+            <MoviesContainer updatedMovies={updatedMovies} selectedGenre={selectedGenre}  />
             </>
             )
             :
-            <h1> Login to view </h1>
+            <h1>Please Login or Signup to View</h1>
             }
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} />
             )
             : 
-            <h1>Login to view</h1>
+            <h1>Please Login or Signup to View</h1>
             }
+          </Route>
+          <Route path='/movies/:id'>
+            {currentUser ? (
+            <MoviePage currentUser={currentUser} reviews={reviews} setReviews={setReviews} />
+            )
+            :
+            <h1>Please Login or Signup to View</h1>
+          }
           </Route>
         </Switch>
       </Router>

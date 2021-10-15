@@ -4,18 +4,19 @@ import UserReviews from './UserReviews';
 
 
 
-function UserProfile({ currentUser, resetCurrentUser }) {
-    const [canEdit, setCanEdit] = useState(false)
-    const [canDelete, setCanDelete] = useState(false)
+function UserProfile({ currentUser, resetCurrentUser, reviews }) {
+    const [canEditAccount, setCanEditAccount] = useState(false)
+    const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
+    const [avatar, setAvatar] = useState('')
 
     function toggleEditProfile() {
-        setCanEdit(!canEdit)
+        setCanEditAccount(!canEditAccount)
     }
 
     function toggleDeleteProfile() {
-        setCanDelete(!canDelete)
+        setCanDeleteAccount(!canDeleteAccount)
     }
 
 
@@ -33,26 +34,35 @@ function UserProfile({ currentUser, resetCurrentUser }) {
 
     function handleNameChange(event) {
         setUsername(event.target.value);
-      }
+     
+    }
 
     function handlePasswordChange(event) {
         setPassword(event.target.value);
-      }
+    
+    }
+
+    function handleAvatarChange(event) {
+        setAvatar(event.target.value);
+    }
 
       function handleUpdateAccount(e) {
         e.preventDefault()
     //   resetCurrentUser(null)
     //   history.push("/login");
         const formData = {
-            username
+            // username
+            username,
+            avatar,
+            password
         }
-
-        fetch(`http://localhost:3001/users/1`, {
-      method: "PATCH", // or 'PUT'
+        
+        fetch(`http://localhost:3001/users/${currentUser.id}`, {
+      method: "PATCH",
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify({formData}),
+      body: JSON.stringify({"username": formData.username, "avatar": formData.avatar, "password": formData.password}),
     })
       .then((response) => response.json())
       .then((data) => {
@@ -65,13 +75,12 @@ function UserProfile({ currentUser, resetCurrentUser }) {
         console.log('hi from the delete')
     }
 
-
     return (
         <div>
             <h1>Welcome {currentUser.username}!</h1>
-            <img className="profile-pic" style={{height: "75px"}} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.6HvWW6db7Fw_EYv5F5AmzQHaEK%26pid%3DApi&f=1" alt="profile-logo"></img>
-            <button onClick={toggleEditProfile}>{canEdit ? "Nevermind" : "Edit Account"}</button>
-            {canEdit ?
+            <img className="profile-pic" style={{height: "75px"}} src={currentUser.avatar}></img>
+            <button onClick={toggleEditProfile}>{canEditAccount ? "Nevermind" : "Edit Account"}</button>
+            {canEditAccount ?
             <div>
             <form onSubmit={handleUpdateAccount}>
                 <label>
@@ -82,17 +91,21 @@ function UserProfile({ currentUser, resetCurrentUser }) {
                 Change Password:
                     <input type="text" name="password" value={password} onChange={handlePasswordChange} />
                 </label>
+                <label>
+                Change Avatar:
+                    <input type="text" name="avatar" value={avatar} onChange={handleAvatarChange} />
+                </label>
                 <input type="submit" value="Submit" />
             </form>
             </div>
             :
             null
             }
-            <button onClick={toggleDeleteProfile}>{canDelete ? "I would Never!" : "Delete Account"}</button>
-            {canDelete ?
+            <button onClick={toggleDeleteProfile}>{canDeleteAccount ? "I would Never!" : "Delete Account"}</button>
+            {canDeleteAccount ?
             <div>
-                <h2>Are you SURE you want to delete your account</h2>
-                <button onSubmit={e => handleDeleteAccount(e)}>Yes, I'd like to be banished to the shadow realm</button>
+                <h2>Deleting Your Account Will Delete EVERYTHING</h2>
+                <button onSubmit={e => handleDeleteAccount(e)}>I've Crunched Enough Carrots</button>
             </div>
             :
             null

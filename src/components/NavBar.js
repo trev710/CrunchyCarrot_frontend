@@ -23,6 +23,9 @@ function NavBar({ currentUser, resetCurrentUser }) {
           </NavLink>
         {currentUser ? (
         <>
+            <NavLink to="/movies" className="nav-link">
+            Browse All Movies
+          </NavLink>
           <NavLink to="/profile" className="nav-link">
             Profile
           </NavLink>
