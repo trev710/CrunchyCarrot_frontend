@@ -54,10 +54,14 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
         e.target.reset()
     }
 
+    function handleFollowOtherUser(data) {
+        console.log(data)
+        // console.log('hi')
+    }
 
     const allReviews = movieToDisplay.reviews.map((review) => {
         return (
-            <div key={review.id} className="movie-reviews">
+<div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
                 <h3>Review By: {review.author}</h3>
                 <p>{review.content}</p>
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>

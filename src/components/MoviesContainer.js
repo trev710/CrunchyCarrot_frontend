@@ -3,7 +3,8 @@ import MoviesTile from './MoviesTile';
 
 
 
-function MoviesContainer({  updatedMoviesForGenre, selectedGenre }) {
+function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntime, updatedMoviesForTime }) {
+    // console.log(selectedRuntime)
 
 
     const filteredByGenre = updatedMoviesForGenre.filter((movie) => {
