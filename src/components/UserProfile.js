@@ -1,15 +1,18 @@
 import React, { useState } from 'react';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserReviews from './UserReviews';
+import { useHistory } from 'react-router-dom';
 
 
 
-function UserProfile({ currentUser, resetCurrentUser, reviews }) {
+function UserProfile({ currentUser, setCurrentUser, reviews }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
     const [avatar, setAvatar] = useState('')
+    
+    const  history = useHistory()
 
     function toggleEditProfile() {
         setCanEditAccount(!canEditAccount)
@@ -70,9 +73,15 @@ function UserProfile({ currentUser, resetCurrentUser, reviews }) {
       })
     }
 
-    function handleDeleteAccount(e) {
-        e.preventDefault()
-        console.log('hi from the delete')
+    function handleDeleteAccount() {
+        fetch(`http://localhost:3001/users/${currentUser.id}`, {
+        method: "DELETE", 
+        headers: {
+        "Content-Type": "application/json",
+      },
+    })
+        setCurrentUser(null)
+        history.push("/");
     }
 
     return (
@@ -105,7 +114,7 @@ function UserProfile({ currentUser, resetCurrentUser, reviews }) {
             {canDeleteAccount ?
             <div>
                 <h2>Deleting Your Account Will Delete EVERYTHING</h2>
-                <button onSubmit={e => handleDeleteAccount(e)}>I've Crunched Enough Carrots</button>
+                <button onClick={handleDeleteAccount}>I've Crunched Enough Carrots</button>
             </div>
             :
             null
