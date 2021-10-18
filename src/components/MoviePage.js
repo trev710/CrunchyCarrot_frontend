@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 
 
-function MoviePage({ currentUser, onAddReview, reviews, setReviews }) {
+function MoviePage({ currentUser, onAddReview, reviews }) {
     const [newContent, setNewContent] = useState("")
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
@@ -20,7 +20,7 @@ function MoviePage({ currentUser, onAddReview, reviews, setReviews }) {
           });
       }, [id]);
 
-      if (!isLoaded) return <h2>Loading...</h2>;
+      if (!isLoaded) return <h2>Loading Please Wait</h2>;
 
     const { title, image, genre, runtime, tagline, releaseYear } = movieToDisplay;
 
@@ -48,10 +48,10 @@ function MoviePage({ currentUser, onAddReview, reviews, setReviews }) {
         })
         .then((r) => r.json())
         .then(data => {
-            // console.log(data)
-            setReviews([...reviews, data])
+            onAddReview(data)
             history.push("/profile");
         })
+        e.target.reset()
     }
 
 

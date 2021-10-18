@@ -9,20 +9,49 @@ import Search from "./Search";
 import Login from './Login';
 import SignUp from './SignUp';
 import MoviePage from './MoviePage';
+import NewMovieForm from './NewMovieForm';
 
 
-function App() {
-  const [moviesState, setMoviesState] = useState([])
-  const [reviews, setReviews] = useState([])
-  const [currentUser, setCurrentUser] = useState(null)
-  const [search, setSearch] = useState("")
-  const [selectedGenre, setSelectedGenre] = useState("")
-  const [selectedRuntime, setSelectedRuntime] = useState(null)
+  function App() {
+    const [moviesState, setMoviesState] = useState([])
+    const [reviews, setReviews] = useState([])
+    const [currentUser, setCurrentUser] = useState(null)
+    const [search, setSearch] = useState("")
+    const [selectedGenre, setSelectedGenre] = useState("")
+    
+    const [selectedRuntime, setSelectedRuntime] = useState(null)
+    
+    
+    
+    function onUpdateUserInfo(data) {
+      const updatedCurrentUser = {
+        id: data.id,
+        username: data.username,
+        avatar: data.avatar,
+        reviews: data.reviews
+      }
+      setCurrentUser(updatedCurrentUser)
+    }
 
+    function onAddReview(newReview) {
+      setReviews([...reviews, newReview])
+    }
 
-  //   function onAddReview(newReview) {
-//     setReviews([...reviews, newReview])
-// }
+    function onUpdateReview(data, formData) {
+      const updatedReviews = reviews.map((review) => {
+        if (review.id === data.id) {
+          return { ...review, content: formData.content }
+        } else {
+          return review
+        }
+      })
+    setReviews(updatedReviews)
+  }
+
+  function onDeleteReview(id) {
+    const filteredReviews = reviews.filter(review => review.id !== id)
+    setReviews(filteredReviews)
+  }
 
   function handleGenreChange(e) {
     setSelectedGenre(e.target.value)
@@ -45,7 +74,7 @@ function App() {
   }, [])
 
 
-  const updatedMovies = moviesState.filter((movie) => {
+  const updatedMoviesForGenre = moviesState.filter((movie) => {
     return movie.title.toLowerCase().includes(search.toLowerCase())
   })
 
@@ -53,6 +82,21 @@ function App() {
   //   moviesState.filter((movie) => {
   //     return movie.runtime
   //   })
+
+
+  const updatedMoviesForTime = moviesState.filter((movie) => {
+    if (selectedRuntime === 'short') {
+      return movie.runtime < 90 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else if (selectedRuntime === 'medium') {
+      return movie.runtime > 90 && movie.runtime < 100 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else if (selectedRuntime === 'mediumish') {
+      return movie.runtime > 100 && movie.runtime < 120 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else if (selectedRuntime === 'long') {
+      return movie.runtime > 120 && movie.title.toLowerCase().includes(search.toLowerCase())
+    } else {
+      return movie
+    }
+  })
 
 
   return (
@@ -72,7 +116,7 @@ function App() {
              <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
              <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
              <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
-            <MoviesContainer updatedMovies={updatedMovies} selectedGenre={selectedGenre}  />
+            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime} />
             </>
             )
             :
@@ -81,15 +125,23 @@ function App() {
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo}  />
             )
             : 
             <h1>Please Login or Signup to View</h1>
             }
           </Route>
+          <Route path='/movies/new'>
+            {currentUser ? (
+              <NewMovieForm  />
+            )
+            :
+            <h1>Please Login or Signup</h1>
+          }
+          </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-            <MoviePage currentUser={currentUser} reviews={reviews} setReviews={setReviews} />
+              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} />
             )
             :
             <h1>Please Login or Signup to View</h1>

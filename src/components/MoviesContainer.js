@@ -3,14 +3,14 @@ import MoviesTile from './MoviesTile';
 
 
 
-function MoviesContainer({  updatedMovies, selectedGenre }) {
+function MoviesContainer({  updatedMoviesForGenre, selectedGenre }) {
 
-    const filteredByGenre = updatedMovies.filter((movie) => {
+
+    const filteredByGenre = updatedMoviesForGenre.filter((movie) => {
         return movie.genre.includes(selectedGenre)
     })
 
-
-    const allMovies = filteredByGenre.map((movie) => {
+    const allMoviesForGenre = filteredByGenre.map((movie) => {
         return <MoviesTile 
         key={movie.id}
         id={movie.id}
@@ -23,16 +23,16 @@ function MoviesContainer({  updatedMovies, selectedGenre }) {
         releaseYear={movie.release_year}
         overview={movie.overview}
         reviews={movie.reviews}
-        //handleReview={handleReview}
         />
     })
 
     return (
         <div>
-        <h1>Trending Right Now!</h1>
-            {allMovies}
+            <h1>Popular Right Now!</h1>
+            {allMoviesForGenre}
         </div>
     )
+
 }
 
 

@@ -29,7 +29,7 @@ function SignUp({ setCurrentUser }) {
     .then((r)=>r.json())
     .then((user) => {
         setCurrentUser(user);
-        console.log(user)
+
         history.push('/');    
 
     })

@@ -1,12 +1,13 @@
 import React, { useState } from 'react';
 import { useHistory } from 'react-router-dom';
 
-function UserReviews({ id, author, authorImage, movieTitle, movieImage, content }) {
+
+function UserReviews({ id, author, authorImage, movieTitle, movieImage, content, onUpdateReview, onDeleteReview, personalRating}) {
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
 
-    const history = useHistory()
+
 
 
     function toggleEditReview() {
@@ -41,9 +42,9 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content 
       })
         .then((response) => response.json())
         .then((data) => {
-          console.log("Success:", data);
-          history.push("/profile");
+            onUpdateReview(data, formData)
         })
+        setUpdatedContent("")
     }
 
     function handleDeleteReview() {
@@ -53,6 +54,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content 
         "Content-Type": "application/json",
       },
     })
+    onDeleteReview(id)
     }
 
     return (
@@ -60,6 +62,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content 
             <h2>{movieTitle}</h2>
             <img style={{height: "50px"}} src={movieImage} alt={movieTitle}></img>
             <h4>{content}</h4>
+            <h4>Your rating: {personalRating}</h4>
             <button onClick={toggleEditReview}>{canEditReview ? "Nevermind" : "Edit Review"}</button>
             {canEditReview ?
             <div>
