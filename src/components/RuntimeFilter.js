@@ -10,7 +10,7 @@ function RuntimeFilter({ handleRuntimeChange }) {
                 <option value="short">SHORT - Less than 90 minutes</option>
                 <option value="medium">MEDIUM - 90-100 minutes</option>
                 <option value="mediumish">LONGER - 100 minutes-2 hours</option>
-                <option value="long">Longest- Over 2 hours</option>
+                <option value="long">LONGEST!!- Over 2 hours</option>
             </select>
         </div>
 

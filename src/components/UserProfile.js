@@ -1,11 +1,12 @@
 import React, { useState } from 'react';
 // import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import UserReviews from './UserReviews';
+import UserFriends from './UserFriends'
 import { useHistory } from 'react-router-dom';
 
 
 
-function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview, onDeleteReview, onUpdateUserInfo }) {
+function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdateReview, onDeleteReview, onUpdateUserInfo, friendshipsState }) {
     const [canEditAccount, setCanEditAccount] = useState(false)
     const [canDeleteAccount, setCanDeleteAccount] = useState(false)
     const [username, setUsername] = useState('')
@@ -14,7 +15,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     // const [accountUpdated, setAccountUpdated] = useState(false)
     // const [reviewsStateWithNew, setReviewsStateWithNew] = useState([])
 
-
+    // debugger
     // useEffect(() => {
     //     fetch('http://localhost:3001/reviews')
     //     .then(response => response.json())
@@ -53,6 +54,16 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         return review.user_id === currentUser.id
     })
 
+
+    const allUserFriends = friendshipsState.map((relationship) => {
+        return <UserFriends
+        key={relationship.id}
+        id={relationship.id}
+        followeeName={relationship.followee_username}
+        followeeId={relationship.followee_id}
+        followeeAvatar={relationship.followee_avatar}
+        />
+    })
 
 
     const allReviews = reviewsByCurrentUser.map((review) => {
@@ -107,6 +118,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
       setAvatar("")
       setUsername("")
       setPassword("")
+      toggleEditProfile()
     }
 
     function handleDeleteAccount() {
@@ -134,7 +146,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
                 </label>
                 <label>
                 Change Password:
-                    <input type="text" name="password" value={password} onChange={handlePasswordChange} />
+                <input type="password" name="password" value={password} onChange={handlePasswordChange} />
                 </label>
                 <label>
                 Change Avatar:
@@ -155,7 +167,8 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
             :
             null
             }
-
+{friendshipsState.length === 0 ? <h2> You're Not Following Anyone Yet! </h2> : <h2>Following</h2>}
+            {allUserFriends}
             <h1>Recent Reviews</h1>
             {allReviews}
         </div>

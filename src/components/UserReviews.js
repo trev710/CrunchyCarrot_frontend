@@ -6,6 +6,7 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
     const [canEditReview, setCanEditReview] = useState(false)
     const [canDeleteReview, setCanDeleteReview] = useState(false)
     const [updatedContent, setUpdatedContent] = useState('')
+    const [updatedRating, setUpdatedRating] = useState(null)
 
 
 
@@ -23,28 +24,31 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
       
     }
 
+    function handleUpdateRating(event) {
+        setUpdatedRating(event.target.value)
+    }
 
     function handleUpdateReview(e) {
         e.preventDefault()
     //   resetCurrentUser(null)
     //   history.push("/login");
         const formData = {
-
-            content: updatedContent
+            content: updatedContent,
+            personal_rating: updatedRating
         }
-        console.log(id)
         fetch(`http://localhost:3001/reviews/${id}`, {
         method: "PATCH", 
         headers: {
           "Content-Type": "application/json",
         },
-        body: JSON.stringify({"content": formData.content}),
+        body: JSON.stringify({"content": formData.content, personal_rating: parseInt(formData.personal_rating)}),
       })
         .then((response) => response.json())
         .then((data) => {
             onUpdateReview(data, formData)
         })
         setUpdatedContent("")
+        setCanEditReview()
     }
 
     function handleDeleteReview() {
@@ -71,6 +75,15 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
                 Edit Your Review
                     <input type="text" name="content" value={updatedContent} onChange={handleContentChange} />
                 </label>
+
+                <select onChange={handleUpdateRating}>
+                    <option value=''>Update Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
 
                 <input type="submit" value="Submit" />
             </form>

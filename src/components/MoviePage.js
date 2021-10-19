@@ -2,14 +2,19 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 
 
-function MoviePage({ currentUser, onAddReview, reviews }) {
+function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
     const [newContent, setNewContent] = useState("")
+    const [newRating, setNewRating] = useState(null)
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
 
     const { id } = useParams();
 
     const  history = useHistory()
+
+    function handleRatingChange(e) {
+        setNewRating(e.target.value)
+    }
 
     useEffect(() => {
         fetch(`http://localhost:3001/movies/${id}`)
@@ -22,7 +27,7 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
 
       if (!isLoaded) return <h2>Loading Please Wait</h2>;
 
-    const { title, image, genre, runtime, tagline, releaseYear } = movieToDisplay;
+      const { title, image, genre, runtime, tagline, releaseYear, overview } = movieToDisplay;
 
 
     function handleSubmitReview(e) {
@@ -31,7 +36,7 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
         const newReview = {
             user_id: currentUser.id,
             movie_id: id,
-            personal_rating: 1,
+            personal_rating: parseInt(newRating),
             content: newContent,
             author: currentUser.username,
             authorImage: currentUser.avatar,
@@ -54,9 +59,27 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
         e.target.reset()
     }
 
-    function handleFollowOtherUser(data) {
-        console.log(data)
-        // console.log('hi')
+    function handleFollowOtherUser(userToFollow) {
+
+        const newFollowerRelationship = {
+            follower_id: currentUser.id,
+            followee_id: userToFollow.id,
+            followee_username: userToFollow.username,
+            followee_avatar: userToFollow.avatar
+        }
+        fetch('http://localhost:3001/friendships', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newFollowerRelationship)
+        })
+        .then((r) => r.json())
+        .then(data => {
+            //console.log(data)
+            onAddNewFollow(data)
+            history.push("/profile");
+        })
     }
 
     const allReviews = movieToDisplay.reviews.map((review) => {
@@ -65,6 +88,7 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
                 <h3>Review By: {review.author}</h3>
                 <p>{review.content}</p>
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
+                <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
             </div>
         )
     })
@@ -77,13 +101,21 @@ function MoviePage({ currentUser, onAddReview, reviews }) {
             <h3>{releaseYear}</h3>
             <h3>Runtime: {runtime} minutes</h3>
             <h4>{tagline}</h4>
-            {/* {allReviews} */}
+            <p>{overview}</p>
             <form onSubmit={handleSubmitReview}>
-            <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
+                <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
+                <select onChange={handleRatingChange}>
+                    <option value=''>Give This Movie a Rating</option>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
                 <input type="submit" value="Submit" />
             </form>
-            <h4>Other Reviews For: {title}</h4>
-            {allReviews}
+            <h4>Other Reviews for {title}</h4>
+              {allReviews}  
         </div>
     )
 }

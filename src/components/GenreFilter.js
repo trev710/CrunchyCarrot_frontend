@@ -1,7 +1,7 @@
 import React from 'react';
 
 
-function GenreFilter({  handleGenreChange, selectedGenre }) {
+function GenreFilter({  handleGenreChange }) {
     return (
 <div className="genre-filter">
         <select name="genre-filter" id="genre-filter" onChange={handleGenreChange}>
@@ -14,7 +14,9 @@ function GenreFilter({  handleGenreChange, selectedGenre }) {
         <option value="Musical">Musical</option>
         <option value="Romance">Romance</option>
         <option value="Western">Western</option>
-        <option value="Science Fiction">Science Fiction</option>
+        <option value="Animation">Animation</option>
+        <option value="Documentary">Documentary</option>
+        <option value="Science Fiction">Sci-Fi</option>
         <option value="Thriller">Thriller</option>
         <option value="Fantasy">Fantasy</option>
         <option value="Horror">Horror</option>

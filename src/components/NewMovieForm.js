@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
+import { useHistory } from "react-router-dom";
 
 
-function NewMovieForm() {
+function NewMovieForm({ onAddMovieToList }) {
     const [newMovieTitle, setNewMovieTitle] = useState("")
     const [newMovieRuntime, setNewMovieRuntime] = useState("")
     const [newMovieImage, setNewMovieImage] = useState("")
@@ -11,10 +12,36 @@ function NewMovieForm() {
     const [newMovieOverview, setNewMovieOverview] = useState("")
     // rating should be defaulted to one
 
+    const  history = useHistory()
+
 
     function handleSubmit(e) {
         e.preventDefault()
-        console.log('hi')
+        const newMovieToPost = {
+            title: newMovieTitle,
+            genre: newMovieGenre,
+            runtime: newMovieRuntime,
+            tagline: newMovieTagline,
+            overview: newMovieOverview,
+            release_year: newMovieReleaseYear,
+            image: newMovieImage,
+            rating: 1
+        }
+
+        fetch('http://localhost:3001/movies', {
+            method: 'POST', 
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(newMovieToPost)
+        })
+        .then((r) => r.json())
+        .then(data => {
+            onAddMovieToList(data)
+            history.push(`/movies/${data.id}`);
+        })
+
+        e.target.reset()
     }
 
 
@@ -28,6 +55,7 @@ function NewMovieForm() {
 
             <label htmlFor="genre">Genre</label>
             <select id="genre" value={newMovieGenre} onChange={(e) => setNewMovieGenre(e.target.value)}>
+                <option value=''>Select Genre</option>
                 <option value="drama">Drama</option>
                 <option value="action">Action</option>
                 <option value="comedy">Comedy</option>
@@ -36,6 +64,8 @@ function NewMovieForm() {
                 <option value="musical">Musical</option>
                 <option value="romance">Romance</option>
                 <option value="western">Western</option>
+                <option value="documentary">Documentary</option>
+                <option value="Animation">Anime</option>
                 <option value="sciene-fiction">Sci-fi</option>
                 <option value="thriller">Thriller</option>
                 <option value="fantasy">Fantasy</option>

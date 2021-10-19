@@ -10,6 +10,7 @@ import Login from './Login';
 import SignUp from './SignUp';
 import MoviePage from './MoviePage';
 import NewMovieForm from './NewMovieForm';
+import OtherUsersProfilePage from './OtherUsersProfilePage';
 
 
   function App() {
@@ -20,6 +21,7 @@ import NewMovieForm from './NewMovieForm';
     const [selectedGenre, setSelectedGenre] = useState("")
     
     const [selectedRuntime, setSelectedRuntime] = useState(null)
+    const [friendshipsState, setFriendshipsState] = useState([])
     
     
     
@@ -37,10 +39,18 @@ import NewMovieForm from './NewMovieForm';
       setReviews([...reviews, newReview])
     }
 
+    function onAddNewFollow(newFollow) {
+      setFriendshipsState([...friendshipsState, newFollow])
+    }
+    
+    function onAddMovieToList(newMovieToAdd) {
+      setMoviesState([...moviesState, newMovieToAdd])
+    }
+
     function onUpdateReview(data, formData) {
       const updatedReviews = reviews.map((review) => {
         if (review.id === data.id) {
-          return { ...review, content: formData.content }
+          return { ...review, content: formData.content, personal_rating: formData.personal_rating }
         } else {
           return review
         }
@@ -71,6 +81,14 @@ import NewMovieForm from './NewMovieForm';
     fetch('http://localhost:3001/reviews')
     .then(response => response.json())
     .then(data => setReviews(data));
+  }, [])
+
+  useEffect(() => {
+    fetch('http://localhost:3001/friendships')
+    .then(response => response.json())
+    .then(data => {
+      setFriendshipsState(data)
+    });
   }, [])
 
 
@@ -116,7 +134,7 @@ import NewMovieForm from './NewMovieForm';
              <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
              <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
              <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
-             <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime}  />
+             <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime} search={search}  />
             </>
             )
             :
@@ -125,7 +143,7 @@ import NewMovieForm from './NewMovieForm';
           </Route>
           <Route path='/profile'>
             {currentUser ? (
-              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo}  />
+              <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo} friendshipsState={friendshipsState}  />
             )
             : 
             <h1>Please Login or Signup to View</h1>
@@ -133,15 +151,23 @@ import NewMovieForm from './NewMovieForm';
           </Route>
           <Route path='/movies/new'>
             {currentUser ? (
-              <NewMovieForm  />
+          <NewMovieForm onAddMovieToList={onAddMovieToList} />
             )
             :
-            <h1>Please Login or Signup</h1>
+            <h1>Please Login or Signup to View</h1>
           }
           </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} />
+              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
+            )
+            :
+            <h1>Please Login or Signup to View</h1>
+          }
+          </Route>
+          <Route path='/users/:id'>
+            {currentUser ? (
+              <OtherUsersProfilePage currentUser={currentUser}  />
             )
             :
             <h1>Please Login or Signup to View</h1>

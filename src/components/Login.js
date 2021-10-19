@@ -4,29 +4,29 @@ import { useHistory } from "react-router-dom";
 function Login({ setCurrentUser }) {
   const [formData, setFormData] = useState({username: "", password: ""});
 
-    const  history = useHistory()
-
-    function handleChange(e) {
-      setFormData({ ...formData, [e.target.name]: e.target.value });
-    }
+  const  history = useHistory()
 
 
-    function handleSubmit(e) {
-      e.preventDefault()
-      fetch("http://localhost:3001/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(formData),
-    })
-      .then((r) => r.json())
-      .then((user) => {
-        // use the response to set state
-        setCurrentUser(user);
-        history.push("/");
-      }); 
-    }
+  function handleChange(e) {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  }
+
+
+  function handleSubmit(e) {
+    e.preventDefault()
+    fetch("http://localhost:3001/login", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(formData),
+  })
+    .then((r) => r.json())
+    .then((user) => {
+      setCurrentUser(user);
+      history.push("/");
+    }); 
+  }
 
     return (
         <div className="login">
