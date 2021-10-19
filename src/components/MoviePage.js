@@ -2,12 +2,14 @@ import React, { useState, useEffect } from 'react';
 import { useHistory, useParams } from "react-router-dom";
 
 
-function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
+function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setReviews }) {
     const [newContent, setNewContent] = useState("")
     const [newRating, setNewRating] = useState(null)
     const [movieToDisplay, setMovieToDisplay] = useState(null)
     const [isLoaded, setIsLoaded] = useState(false);
-
+    const [movieReviews, setMovieReviews] = useState(null)
+    // const [test, setTest] = useState(false)
+    
     const { id } = useParams();
 
     const  history = useHistory()
@@ -16,11 +18,34 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         setNewRating(e.target.value)
     }
 
+    function handleLike(reviewObj){
+        let likesToUpdate = reviewObj.likes
+
+        const updateObj = {
+            likes: reviewObj.likes + 1
+        };
+
+          fetch(`http://localhost:3001/reviews/${reviewObj.id}`, {
+            method: "PATCH",
+            headers: {
+              "Content-Type": "application/json",
+            },
+            body: JSON.stringify(updateObj),
+          })
+            .then((r) => r.json())
+            .then(data => {
+            
+                console.log(data)
+               
+            });
+    }
+
     useEffect(() => {
         fetch(`http://localhost:3001/movies/${id}`)
           .then((r) => r.json())
           .then((movie) => {
             setMovieToDisplay(movie);
+            setMovieReviews(movie.reviews)
             setIsLoaded(true);
           });
       }, [id]);
@@ -41,7 +66,8 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
             author: currentUser.username,
             authorImage: currentUser.avatar,
             movieTitle: title,
-            movieImage: image
+            movieImage: image,
+            likes: 0
         }
 
         fetch('http://localhost:3001/reviews', {
@@ -82,19 +108,21 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow }) {
         })
     }
 
-    const allReviews = movieToDisplay.reviews.map((review) => {
+    const allReviews = movieReviews.map((review) => {
         return (
-<div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
+            <div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
                 <h3>Review By: {review.author}</h3>
                 <p>{review.content}</p>
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
                 <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
+                <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
+                <p>{review.likes} likes</p>
             </div>
         )
     })
 
     return (
-        <div>
+        <div className="movie-show-page">
             <h1>{title}</h1>
             <img style={{height: "400px"}} src={image} alt={id}></img>
             <h3>{genre}</h3>

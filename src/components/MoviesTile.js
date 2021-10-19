@@ -4,9 +4,6 @@ import { Link } from 'react-router-dom';
 
 function MoviesTile({ id, title, genre, runtime, tagline, releaseYear, image }) {
     
-    function handleReview() {
-        console.log(id)
-    }
 
     return (
         <div>

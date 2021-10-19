@@ -14,8 +14,8 @@ function NavBar({ currentUser, resetCurrentUser }) {
     return (
         <div>
 
-<img style={{height: "100px"}} src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.clipartkey.com%2Fmpngs%2Fm%2F28-283187_dinosaur-clipart-fat-carrot-cartoon.png&f=1&nofb=1" alt="CC logo"></img>
-          <h1>Crunchy Carrots</h1>
+<img className="app-mascot" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.clipartkey.com%2Fmpngs%2Fm%2F28-283187_dinosaur-clipart-fat-carrot-cartoon.png&f=1&nofb=1" alt="CC logo"></img>
+<h1 className="app-name"> Crunchy Carrots</h1>
 
 
           <NavLink to="/" className="nav-link">

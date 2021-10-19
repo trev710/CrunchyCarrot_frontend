@@ -13,63 +13,75 @@ import NewMovieForm from './NewMovieForm';
 import OtherUsersProfilePage from './OtherUsersProfilePage';
 
 
-  function App() {
-    const [moviesState, setMoviesState] = useState([])
-    const [reviews, setReviews] = useState([])
-    const [currentUser, setCurrentUser] = useState(null)
-    const [search, setSearch] = useState("")
-    const [selectedGenre, setSelectedGenre] = useState("")
-    
-    const [selectedRuntime, setSelectedRuntime] = useState(null)
-    const [friendshipsState, setFriendshipsState] = useState([])
-    
-    
-    
-    function onUpdateUserInfo(data) {
-      const updatedCurrentUser = {
-        id: data.id,
-        username: data.username,
-        avatar: data.avatar,
-        reviews: data.reviews
+function App() {
+  const [moviesState, setMoviesState] = useState([])
+  const [reviews, setReviews] = useState([])
+  const [currentUser, setCurrentUser] = useState(null)
+  const [search, setSearch] = useState("")
+  const [selectedGenre, setSelectedGenre] = useState("")
+  const [selectedRuntime, setSelectedRuntime] = useState(null)
+  const [friendshipsState, setFriendshipsState] = useState([])
+
+
+  function onUpdateUserInfo(data) {
+    const updatedCurrentUser = {
+      id: data.id,
+      username: data.username,
+      avatar: data.avatar,
+      reviews: data.reviews
+    }
+    setCurrentUser(updatedCurrentUser)
+  }
+
+
+  function onAddReview(newReview) {
+    setReviews([...reviews, newReview])
+  }
+
+
+  function onAddNewFollow(newFollow) {
+    setFriendshipsState([...friendshipsState, newFollow])
+  }
+
+
+  function onAddMovieToList(newMovieToAdd) {
+    setMoviesState([...moviesState, newMovieToAdd])
+  }
+
+
+  function onUpdateReview(data, formData) {
+    const updatedReviews = reviews.map((review) => {
+      if (review.id === data.id) {
+        return { ...review, content: formData.content, personal_rating: formData.personal_rating }
+      } else {
+        return review
       }
-      setCurrentUser(updatedCurrentUser)
-    }
-
-    function onAddReview(newReview) {
-      setReviews([...reviews, newReview])
-    }
-
-    function onAddNewFollow(newFollow) {
-      setFriendshipsState([...friendshipsState, newFollow])
-    }
-    
-    function onAddMovieToList(newMovieToAdd) {
-      setMoviesState([...moviesState, newMovieToAdd])
-    }
-
-    function onUpdateReview(data, formData) {
-      const updatedReviews = reviews.map((review) => {
-        if (review.id === data.id) {
-          return { ...review, content: formData.content, personal_rating: formData.personal_rating }
-        } else {
-          return review
-        }
-      })
+    })
     setReviews(updatedReviews)
   }
+
 
   function onDeleteReview(id) {
     const filteredReviews = reviews.filter(review => review.id !== id)
     setReviews(filteredReviews)
   }
 
+
+  function onDeleteFriendship(id) {
+    const filteredFriendships = friendshipsState.filter(relationship => relationship.id !== id)
+    setFriendshipsState(filteredFriendships)
+  }
+
+
   function handleGenreChange(e) {
     setSelectedGenre(e.target.value)
   }
 
+
   function handleRuntimeChange(e) {
     setSelectedRuntime(e.target.value)
   }
+
 
   useEffect(() => {
     fetch('http://localhost:3001/movies')
@@ -96,11 +108,6 @@ import OtherUsersProfilePage from './OtherUsersProfilePage';
     return movie.title.toLowerCase().includes(search.toLowerCase())
   })
 
-  // if (selectedRuntime) {
-  //   moviesState.filter((movie) => {
-  //     return movie.runtime
-  //   })
-
 
   const updatedMoviesForTime = moviesState.filter((movie) => {
     if (selectedRuntime === 'short') {
@@ -116,61 +123,78 @@ import OtherUsersProfilePage from './OtherUsersProfilePage';
     }
   })
 
+  // function onUpdateLikes(likedReview) {
+  //   console.log(likedReview)
+  //   const updatedReviewForLikes = reviews.map((review) => {
+  //     if (review.id === likedReview.id) {
+  //       return { ...review, likes: likedReview.likes }
+  //     } else {
+  //       return review
+  //     }
+  //   })
+  //   setReviews(updatedReviewForLikes)
+  // }
 
+ 
   return (
-    <div className="App">
+    <div className="app">
       <Router>
-      <Header currentUser={currentUser} resetCurrentUser={setCurrentUser} />
+        <Header currentUser={currentUser} resetCurrentUser={setCurrentUser} />
         <Switch>
           <Route path='/signup'>
-          <SignUp setCurrentUser={setCurrentUser} />
+            <SignUp setCurrentUser={setCurrentUser} />
           </Route>
           <Route path='/login'>
-          <Login setCurrentUser={setCurrentUser} />
+            <Login setCurrentUser={setCurrentUser} />
           </Route>
           <Route exact path='/'>
-            {currentUser ? (
-              <>
-             <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
-             <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
-             <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
-             <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime} search={search}  />
-            </>
-            )
-            :
-            <h1>Please Login or Signup to View</h1>
-            }
+          {currentUser ? (
+          <>
+            <Search search={search} setSearch={setSearch} currentUser={currentUser}  />
+            <GenreFilter handleGenreChange={handleGenreChange} selectedGenre={selectedGenre}  />
+            <RuntimeFilter handleRuntimeChange={handleRuntimeChange} />
+            <MoviesContainer updatedMoviesForGenre={updatedMoviesForGenre} selectedGenre={selectedGenre} updatedMoviesForTime={updatedMoviesForTime} selectedRuntime={selectedRuntime} search={search}  />
+          </>
+          )
+          :
+          <div className="login-or-signup-prompt">
+            <img className="logsignp" src="https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif" alt="=giffie" /> 
+            {/* https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif              backupimage */}
+            <h3>Write Movie Reviews and Share Them with Friends</h3>
+            <h3>Please Login or Signup</h3>
+          </div>
+          }
           </Route>
           <Route path='/profile'>
             {currentUser ? (
               <UserProfile currentUser={currentUser} setCurrentUser={setCurrentUser} reviews={reviews} setReviews={setReviews} onUpdateReview={onUpdateReview} onDeleteReview={onDeleteReview} onUpdateUserInfo={onUpdateUserInfo} friendshipsState={friendshipsState}  />
             )
-            : 
-            <h1>Please Login or Signup to View</h1>
-            }
+            :
+            <h1>Please Login or Signup</h1>
+          }
           </Route>
           <Route path='/movies/new'>
             {currentUser ? (
-          <NewMovieForm onAddMovieToList={onAddMovieToList} />
+              <NewMovieForm onAddMovieToList={onAddMovieToList} />
             )
             :
-            <h1>Please Login or Signup to View</h1>
+            <h1>Please Login or Signup</h1>
           }
           </Route>
           <Route path='/movies/:id'>
             {currentUser ? (
-              <MoviePage currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
+              <MoviePage setReviews={setReviews} currentUser={currentUser} reviews={reviews} onAddReview={onAddReview} onAddNewFollow={onAddNewFollow} />
             )
             :
-            <h1>Please Login or Signup to View</h1>
+            <h1>Please Login or Signup</h1>
           }
           </Route>
           <Route path='/users/:id'>
             {currentUser ? (
-              <OtherUsersProfilePage currentUser={currentUser}  />
+              <OtherUsersProfilePage onDeleteFriendship={onDeleteFriendship} />
             )
             :
-            <h1>Please Login or Signup to View</h1>
+            <h1>Please Login or Signup</h1>
           }
           </Route>
         </Switch>

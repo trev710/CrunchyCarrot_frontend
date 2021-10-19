@@ -46,14 +46,14 @@ function NewMovieForm({ onAddMovieToList }) {
 
 
     return (    
-        <div>
+        <div className='new-movie-form'>
             <h3>Add your favorite movies to Crunchy Carrots here!</h3>
-            <form onSubmit={handleSubmit}>
+            <form className='new-movie-form-input' onSubmit={handleSubmit}>
 
-            <label htmlFor="title">Title</label>
-            <input type="text" id="title" value={newMovieTitle} onChange={(e) => setNewMovieTitle(e.target.value)} />
-
-            <label htmlFor="genre">Genre</label>
+{/* <label htmlFor="title">Title</label> */}
+<input className='new-movie-form-input' type="text" id="title" value={newMovieTitle} placeholder="Title" onChange={(e) => setNewMovieTitle(e.target.value)} />
+<br></br>
+{/* <label htmlFor="genre">Genre</label> */}
             <select id="genre" value={newMovieGenre} onChange={(e) => setNewMovieGenre(e.target.value)}>
                 <option value=''>Select Genre</option>
                 <option value="drama">Drama</option>
@@ -72,22 +72,23 @@ function NewMovieForm({ onAddMovieToList }) {
                 <option value="horror">Horror</option>
             </select>
 
-            <label htmlFor="avatar">Poster Image URL</label>
-            <input type="text" id="image" value={newMovieImage} onChange={(e) => setNewMovieImage(e.target.value)}/>
-
-            <label htmlFor="avatar">Runtime</label>
-            <input type="text" id="runtime" value={newMovieRuntime} onChange={(e) => setNewMovieRuntime(e.target.value)}/>
-
-            <label htmlFor="avatar">Release Year</label>
-            <input type="text" id="text" value={newMovieReleaseYear} onChange={(e) => setNewMovieReleaseYear(e.target.value)}/>
-
-            <label htmlFor="avatar">Tagline</label>
-            <input type="text" id="tagline" value={newMovieTagline} onChange={(e) => setNewMovieTagline(e.target.value)}/>
-
-            <label htmlFor="avatar">Overview</label>
-            <input type="text" id="overview" value={newMovieOverview} onChange={(e) => setNewMovieOverview(e.target.value)}/>
-
-            <input type="submit" value="Submit New Movie" />
+            <br></br>
+            {/* <label htmlFor="avatar">Poster Image URL</label> */}
+            <input type="text" id="image" value={newMovieImage} placeholder="Poster Image" onChange={(e) => setNewMovieImage(e.target.value)}/>
+            <br></br>
+            {/* <label htmlFor="avatar">Runtime</label> */}
+            <input type="text" id="runtime" value={newMovieRuntime} placeholder="Runtime (in minutes)" onChange={(e) => setNewMovieRuntime(e.target.value)}/>
+            <br></br>
+            {/* <label htmlFor="avatar">Release Year</label> */}
+            <input type="text" id="text" value={newMovieReleaseYear} placeholder="Release Year" onChange={(e) => setNewMovieReleaseYear(e.target.value)}/>
+            <br></br>
+            {/* <label htmlFor="avatar">Tagline</label> */}
+            <input type="text" id="tagline" value={newMovieTagline} placeholder="Tagline" onChange={(e) => setNewMovieTagline(e.target.value)}/>
+            <br></br>
+            {/* <label htmlFor="avatar">Overview</label> */}
+            <input type="text" id="overview" value={newMovieOverview} placeholder="Overview" onChange={(e) => setNewMovieOverview(e.target.value)}/>
+            <br></br>
+            <input className="submit-new-movie-btn" type="submit" value="Submit New Movie" />
         </form>
     </div>
     )
