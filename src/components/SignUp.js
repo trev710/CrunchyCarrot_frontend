@@ -5,7 +5,10 @@ function SignUp({ setCurrentUser }) {
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
   const [avatar, setAvatar] = useState("");
+  const [email, setEmail] = useState("")
+  
   const history = useHistory();
+  
 
 
   function handleSubmit(e){
@@ -24,7 +27,7 @@ function SignUp({ setCurrentUser }) {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify({"username": signupFormData.username, "password": signupFormData.password, "avatar": signupFormData.avatar}),
+        body: JSON.stringify({"username": signupFormData.username, "password": signupFormData.password, "avatar": signupFormData.avatar, "email": signupFormData.email}),
     })
     .then((r)=>r.json())
     .then((user) => {
@@ -63,6 +66,15 @@ return (
         onChange={(e) => setPassword(e.target.value)}
         placeholder="Password"
       />
+       <br></br>
+       <input
+         type="text"
+         name="email"
+         autoComplete="current-password"
+         value={email}
+         onChange={(e) => setEmail(e.target.value)}
+         placeholder="Email"
+       />
 
 <br></br>
 

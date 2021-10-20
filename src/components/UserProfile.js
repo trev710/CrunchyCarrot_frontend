@@ -100,7 +100,8 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
         const formData = {
             username,
             avatar,
-            password
+            password,
+            email: "crunchycarrotsfake@gmail.com"
         }
         
         fetch(`http://localhost:3001/users/${currentUser.id}`, {
