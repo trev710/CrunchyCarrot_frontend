@@ -97,8 +97,8 @@ from Polenta app
   margin-top: 30px;
   margin-left: auto;
   margin-right: auto;
-
   box-shadow: 20px 20px 20px rgb(214, 211, 211);
+  filter: brightness(160%);
 }
 
 .login-or-signup-prompt h3 {
@@ -255,6 +255,7 @@ from Polenta app
   border: none;
   background: #f1f1f1;
   border-radius: 10px;
+  cursor: row-resize;
 }
 
 .new-movie-form-input select {
@@ -327,3 +328,110 @@ from Polenta app
   width: auto;
   float: left;
 }
+
+.search {
+  border-radius: 5px;
+  height: 25px;
+  width: 33%;
+  padding: 4px 23px 4px 30px;
+  margin: 20px;
+  outline: 0;
+  color: #f5f5f5;
+}
+
+.search input {
+  border-radius: 5px;
+  height: 25px;
+  width: 75%;
+  padding: 2px 2px 4px 5px;
+  margin: 2px;
+  background-color: #f5f5f5;
+  font-family: 'Courier New', Courier, monospace;
+  font-weight: bold;
+}
+
+.search input:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+
+#genre-filter {
+  /* float: right; */
+  width: 10%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.45em;
+  padding: 0.60em 0.5em;
+  font-size: 0.85rem;
+  cursor: row-resize;
+  line-height: 1.1;
+  background-color: #f5f5f5;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: #444;
+  float: right;
+  margin-right: 300px;
+  margin-top: -50px;
+}
+
+#runtime-filter {
+  width: 30%;
+  min-width: 15ch;
+  max-width: 30ch;
+  border: 1px solid var(--select-border);
+  border-radius: 0.45em;
+  padding: 0.60em 0.5em;
+  font-size: 0.85rem;
+  cursor: row-resize;
+  line-height: 1.1;
+  background-color: #f5f5f5;
+  font-family: sans-serif;
+  font-weight: 700;
+  color: #444;
+  float: right;
+  margin-right: 40px; 
+  margin-top: -50px; 
+}
+
+
+
+
+
+
+.movie-show-page {
+  float: left;
+}
+
+.movie-show-image{
+  margin: 25px;
+  border-radius: 12px;
+  width: auto;
+  height: 400px;
+  border: 0.5px solid white;
+  box-shadow: 0 0 10px 3px rgba(47, 80, 104, 0.91) ;
+}
+
+.movie-show-title {
+  font: normal normal bold 77px/1 Georgia, serif;
+  text-align: center;
+  color: #3d82aa;
+  font-size: 30px;
+  font-weight: 900;
+  letter-spacing: -2px;
+  word-spacing: 3px;
+  text-shadow: 0.7px 0.7px rgb(255, 253, 253);
+  /* margin-top: -400px;  */
+}
+
+.movie-show-page {
+  margin: 2px;
+}
+
+
+
+/* 
+.movie-reviews {
+  float: right;
+} */ 

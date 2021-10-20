@@ -52,7 +52,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
       if (!isLoaded) return <h2>Loading Please Wait</h2>;
 
-      const { title, image, genre, runtime, tagline, releaseYear, overview } = movieToDisplay;
+      const { title, image, genre, runtime, tagline, release_year, overview } = movieToDisplay;
 
 
     function handleSubmitReview(e) {
@@ -123,10 +123,11 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
     return (
         <div className="movie-show-page">
-            <h1>{title}</h1>
-            <img style={{height: "400px"}} src={image} alt={id}></img>
+            
+            <img className="movie-show-image" src={image} alt={id}></img>
+            <h1 className="movie-show-title" >{title}</h1>
+            <h4>{release_year}</h4>
             <h3>{genre}</h3>
-            <h3>{releaseYear}</h3>
             <h3>Runtime: {runtime} minutes</h3>
             <h4>{tagline}</h4>
             <p>{overview}</p>

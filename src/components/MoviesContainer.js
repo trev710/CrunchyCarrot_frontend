@@ -66,7 +66,7 @@ function MoviesContainer({  updatedMoviesForGenre, selectedGenre, selectedRuntim
 
         return (
             <div>
-                <h1>Popular This Week</h1>
+                <h4 className="movies-container-header">Popular This Week</h4>
                 {allMoviesForRuntime}
             </div>
         )

@@ -4,7 +4,7 @@ import React from 'react';
 function GenreFilter({  handleGenreChange }) {
     return (
 <div className="genre-filter">
-        <select name="genre-filter" id="genre-filter" onChange={handleGenreChange}>
+<select name="genre-filter" id="genre-filter" onChange={handleGenreChange}>
         <option value=''>Select Genre</option>
         <option value="Drama">Drama</option>
         <option value="Action">Action</option>
