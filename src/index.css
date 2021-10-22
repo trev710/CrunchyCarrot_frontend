@@ -19,7 +19,7 @@ code {
 }
 
 .nav-link {
-  color: #c2b092;
+  color: yellow;
   font-size: 30px;
   font-family: 'Courier', Courier, monospace;
   float: left;
@@ -30,11 +30,12 @@ code {
 
 .app-name {
   /* float: right; */
+  border: yellow;
   font-family: 'Courier';
   margin-left: 150px;
   margin-left: 10px;
   margin-bottom: 10px;
-  color: #3d82aa;
+  color: black;
   font-size: 40px;
   /* height: 100px; */
   width: 100%; /** Use 100% to fill the width of the page **/
@@ -112,7 +113,7 @@ from Polenta app
   font-family:  Georgia,serif;
   font-weight: 900;
   /* font-size: 2.46153846rem; */
-  color: #3d82aa;
+  color:black;
   text-shadow: 1px 1px 1px #ffffff;
   text-align: center;
 }
@@ -239,7 +240,7 @@ from Polenta app
     font-family:  Georgia,serif;
     font-weight: 900;
     /* font-size: 2.46153846rem; */
-    color: #3d82aa;
+    color: black;
     text-shadow: 1px 1px 1px #ffffff;
     text-align: center;
     word-spacing: 10px;
