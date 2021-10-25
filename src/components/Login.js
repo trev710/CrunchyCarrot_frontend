@@ -29,7 +29,7 @@ function Login({ setCurrentUser }) {
   }
 
     return (
-      <div >
+      <div className="login-credentials">
       <form className="login" onSubmit={handleSubmit} autoComplete="off">
 
             <input

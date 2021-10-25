@@ -436,3 +436,660 @@ from Polenta app
 .movie-reviews {
   float: right;
 } */ 
+
+.movie-show-year {
+  color: #3d82aa;
+  position: relative;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  left: 25%;
+  top: -400px;
+}
+.movie-show-genre {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  left: 33%;
+  top: -442px;
+}
+.movie-show-runtime {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 18px;
+  font-weight: 500;
+  position: relative;
+  left: 25%;
+  top: -430px;
+}
+.movie-show-overview {
+  color: #3d82aa;
+  font: normal normal bold 77px/1 Georgia;
+  font-size: 20px;
+  font-weight: 600;
+  position: relative;
+  left: 25%;
+  top: -400px;
+  width: 60%;
+  word-spacing: 8px;
+}
+.movie-show-tagline {
+  color: #3d82aa;
+  font: Oxygen;
+  font-size: 20px;
+  font-weight: 900;
+  position: relative;
+  left: 1.5%;
+  top: -300px;
+  width: 60%;
+  word-spacing: 8px;
+}
+#myBtn {
+  width: 10%;
+  background: #00c030;
+  color: #fff;
+  margin-top: -11px;
+  margin-left: 20px;
+  padding: .3em 1.25em;
+  font-size: 1rem;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-radius: 6px;
+  border-style: hidden;
+}
+#myBtn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+/* Modal Header */
+.modal-header {
+  padding: 1px 16px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #3d82a9;
+  color: #ccdded;
+}
+.close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Modal Body */
+.modal-body {
+  padding: 100px 16px;
+}
+/* Modal Content */
+.modal-content {
+  position: absolute;
+  background-color: #3d82a9;
+  margin-left: 200px;
+  margin-top: -400px;
+  padding: 0;
+  left: 40px;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60%;
+  height: 60%;
+  box-shadow: 4 8px 16px 0 rgba(0,0,0,0.2),6 12px 40px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 800px 200px rgba(73,73,73,0.91) ;
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {right: -400px; opacity: 0}
+  to {right: 0; opacity: 1}
+}
+.review-text {
+  padding: 10px 10px;
+  line-height: 1.4;
+  margin: auto;
+  margin-top: -100px;
+  height: 20em;
+  align-content: center;
+  width: 90%;
+  border-radius: 5px;
+}
+.review-text:focus {
+  background-color: #ccdded;
+  outline: none;
+}
+.review-star-rating {
+  width: 21.5%;
+  font-size: 12px;
+  padding: 10px;
+  margin: 20px 0 15px 5px;
+  display: inline-block;
+  border: none;
+  background: #ccdded;
+  border-radius: 10px;
+  cursor: row-resize;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+.submit-review-btn {
+  width: 10%;
+  background: #00c030;
+  color: #fff;
+  margin-top: 25px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: .3em 1.10em;
+  font-size: 1rem;
+  float: right;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-radius: 6px;
+  border-style: hidden;
+}
+.submit-review-btn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.movie-show-review-header {
+  margin: auto;
+  color: #3d82aa;
+  margin: 30px 0 4px 20px;
+}
+.movie-show-review-header-hr {
+  border: 0;
+  height: 1px;
+  color: #3d82aa;
+  background-color: #3d82aa;
+  background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
+}
+.movie-page-author-image {
+  border-radius: 50%;
+  height: 50px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.all-movie-review-details {
+  margin: -70px 1px 50px 80px;
+}
+.all-movie-reviews h3 {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.801);
+  text-shadow: 1px 1px #c2b092;
+}
+.all-movie-reviews span {
+  font-size: 42px;
+  color: #fff;
+  text-shadow: 1px 1px #c2b092;
+}
+.follow-button {
+  background: #00c030;
+  color: #fff;
+  margin: -800px 100px 1px 1px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.follow-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.all-movie-reviews h5 {
+  font-size: 23px;
+  font-weight: 900;
+  color: #3d82a8;
+  text-shadow: 1px 1px #c2b092;
+  word-spacing: 4px;
+}
+.like-button {
+  background-color: Transparent;
+  background-repeat:no-repeat;
+  border: none;
+  cursor:pointer;
+  overflow: hidden;
+  color: #3d82a8;
+  font-weight: 700;
+}
+.all-movie-reviews p {
+  font-size: 14px;
+  font-weight: 900;
+  color: #3d82a8;
+  text-shadow: 1px 1px #c2b092;
+  margin: -20px 1px 1px 125px;
+}
+.movie-tile {
+  margin-left: 5px;
+  margin-right: 5px;
+  border-radius: 8px;
+  height: 400px;
+  background-size: 270px;
+}
+.movie-tile h1 {
+  text-decoration: none;
+  margin-top: 5px;
+  text-align: center;
+  font-family: "Cantarell", monospace;
+  color:rgb(255, 254, 254, 0.55);
+}
+.movie-tile:hover {
+  border: 2px solid #01e63a;
+  transition: all .2s ease;
+  -webkit-transition: all .2s ease;
+}
+.movie-tile img {
+  height: 200px;
+  /* margin: auto; */
+  /* padding: 30px; */
+  width: 133px;
+  align-content: center;
+  border-radius: 5px;
+}
+.movies-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 5px;
+  /* grid-template-rows: 25% 100px auto; */
+  /* margin: 500px; */
+  /* flex-direction: row; */
+  /* gap: 10px; */
+}
+.movies-container-header {
+  margin: auto;
+  color: #3d82aa;
+  margin: 45px 0 4px 13px;
+}
+.movies-container-hr {
+  border: 0;
+  height: 1px;
+  color: #3d82aa;
+  background-color: #3d82aa;
+  background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
+}
+.profile-pic {
+  height: 105px;
+  border-radius: 50px;
+  margin: 20px 0 0 20px;
+  filter: brightness(120%);
+  border: 1px solid white;
+}
+.profile-username {
+  color: #fff;
+  margin: -100px 10px 40px 150px;
+  text-shadow: 1px 1px #c2b092;
+}
+.edit-account-button {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 100px 145px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.edit-account-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+/* Profile Modal Header */
+.profile-modal-header {
+  padding: 1px 16px;
+  margin-bottom: -50px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #3d82a9;
+  color: #ccdded;
+}
+.profile-close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Modal Body */
+.profile-modal-body {
+  padding: 100px 16px;
+}
+/* Modal Content */
+.profile-modal-content {
+  position: absolute;
+  background-color: #3d82a9;
+  margin-left: 240px;
+  margin-top: -250px;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60%;
+  height: 65%;
+  box-shadow: 4 8px 16px 0 rgba(0,0,0,0.2),6 12px 40px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+  box-shadow: 0 0 800px 200px rgba(73,73,73,0.91) ;
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {left: -400px; opacity: 0}
+  to {left: 0; opacity: 1}
+}
+.profile-modal-body input[type=text] {
+  width: 50%;
+  font-size: 15px;
+  padding: 10px;
+  margin: -35px 0 35px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.profile-modal-body input[type=password] {
+  width: 50%;
+  font-size: 15px;
+  padding: 10px;
+  margin: -35px 0 35px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+}
+.new-movie-form input:focus {
+  background-color: #ddd;
+  outline: none;
+}
+.edit-profile-submit {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 50px 25px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.edit-profile-submit:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.delete-profile-submit {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 20px 25px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.delete-profile-submit:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.confirm-delete h2 {
+  color: #c2b092;
+  font-size: 30px;
+  font-family: 'Courier', Courier, monospace;
+  font-weight: 650;
+  float: left;
+  text-decoration: none;
+  margin-top: -10px;
+  margin-right: 10px;
+  display: block;
+  padding: 2px 5px 5px 25px;
+  letter-spacing: -2px;
+  word-spacing: -2.5px;
+  text-shadow: 1px 1px rgb(255, 253, 253);
+  transition: background-position 275ms ease;
+}
+.confirm-delete button {
+  background: #00c030;
+  color: #fff;
+  margin: -400px 100px 20px 20px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.confirm-delete button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.user-friends-header {
+  font-size: 12px;
+  margin: auto;
+  color: #3d82aa;
+  margin: 45px 0 4px 13px;
+}
+.profile-hr {
+  border: 0;
+  height: 1px;
+  color: #3d82aa;
+  background-color: #3d82aa;
+  background-image: linear-gradient(to right, #ccc, #3d82aa, #ccc);
+}
+.user-friends-container {
+  margin-top: -100px;
+}
+.other-user-avatar {
+  overflow: hidden;
+  display: inline;
+  flex-wrap: wrap;
+}
+.other-user-avatar img {
+  border-radius: 50%;
+  height: 50px;
+  margin-left: 4px;
+  margin-right: 4px;
+}
+.user-reviews-container {
+  margin-top: 50px;
+  /* margin-bottom: 50px; */
+}
+.user-reviews-header {
+  font-size: 20px;
+  /* margin: auto; */
+  color: #3d82aa;
+  margin: 45px 0 4px 9px;
+}
+.user-reviews img {
+  height: 200px;
+  border-radius: 20px;
+  margin-left: 10px;
+  margin-top: 20px;
+}
+.movie-review-details {
+  margin: -200px 1px 100px 200px;
+}
+.movie-review-details h2 {
+  font-size: 32px;
+  color: #fff;
+  text-shadow: 1px 1px #c2b092;
+}
+.movie-review-details h4 {
+  margin-top: -5px;
+  font-size: 15px;
+  color: #3d82a8;
+  text-shadow: 1px 1px #c2b092;
+}
+.edit-review-button {
+  background: #00c030;
+  color: #fff;
+  margin: 7px 0px 7px 0px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.edit-review-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.delete-review-button {
+  background: #00c030;
+  color: #fff;
+  margin: 10px 100px 100px 5px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  position: relative;
+}
+.delete-review-button:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.review-modal-header {
+  padding: 1px 16px;
+  margin-bottom: -50px;
+  font-family: 'Courier New', Courier, monospace;
+  background-color: #3d82a9;
+  color: #ccdded;
+}
+.review-modal-header h2 {
+  font-size: 25px;
+}
+.review-close {
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+  cursor: pointer;
+}
+/* Modal Body */
+.review-modal-body {
+  padding: 100px 16px;
+}
+/* Modal Content */
+.review-modal-content {
+  position: absolute;
+  background-color: #3d82a9;
+  margin-left: 140px;
+  margin-top: -250px;
+  padding: 0;
+  border: 1px solid #888;
+  border-radius: 4px;
+  width: 60%;
+  height: 65%;
+  box-shadow: 4 8px 16px 0 rgba(0,0,0,0.2),6 12px 40px 0 rgba(0,0,0,0.19);
+  animation-name: animatetop;
+  animation-duration: 0.001s;
+  box-shadow: 0 0 800px 200px rgba(73,73,73,0.91) ;
+}
+/* Add Animation */
+@keyframes animatetop {
+  from {left: -400px; opacity: 0}
+  to {left: -200; opacity: 1}
+}
+/* .review-modal-body input[type=text] {
+  width: 50%;
+  font-size: 15px;
+  padding: 10px;
+  margin: -35px 0 35px 20px;
+  display: inline-block;
+  border: none;
+  background: #f1f1f1;
+  border-radius: 10px;
+} */
+.edit-review-text {
+  padding: 10px 10px;
+  margin: auto;
+  margin-top: -50px;
+  height: 10em;
+  /* align-content: center; */
+  width: 90%;
+  border-radius: 5px;
+}
+.edit-review-text:focus {
+  background-color: #ccdded;
+  outline: none;
+}
+.edit-star-rating {
+  width: 21.5%;
+  font-size: 12px;
+  padding: 10px;
+  margin: 20px 0 15px 5px;
+  display: inline-block;
+  border: none;
+  background: #ccdded;
+  border-radius: 10px;
+  cursor: row-resize;
+  font-family: sans-serif;
+  font-weight: 700;
+}
+.submit-edit-review-btn {
+  width: 10%;
+  background: #00c030;
+  color: #fff;
+  margin-top: -50px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: .3em 1.10em;
+  font-size: 1rem;
+  float: right;
+  font-family: inherit;
+  vertical-align: baseline;
+  border-radius: 6px;
+  border-style: hidden;
+}
+.submit-edit-review-btn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.confirm-delete-review-container {
+  margin-top: -100px;
+}
+.other-profile-username {
+  color: #fff;
+  margin: -100px 10px 40px 165px;
+  text-shadow: 1px 1px #c2b092;
+}
+.other-profile-pic {
+  height: 105px;
+  border-radius: 50px;
+  margin: 20px 0 0 20px;
+  filter: brightness(120%);
+  border: 1px solid white;
+}
+.following-btn {
+  background: #00c030;
+  color: #fff;
+  margin: -200px 100px 100px 168px;
+  padding: .2em 1em;
+  font-size: 1rem;
+  font-family: inherit;
+  /* vertical-align: baseline; */
+  border-radius: 6px;
+  border-style: hidden;
+  border: none;
+  position: relative;
+}
+.following-btn:hover {
+  box-shadow: 4px 4px 4px 0 rgba(0,0,0,0.2) ;
+  background: #00a72a;
+}
+.alt-user-reviews-container {
+  margin: -50px 1px 1px 10px;
+  /* margin-bottom: 50px; */
+}
+
+.login-credentials p {
+  margin-left: 22px;
+  margin-top: 30px;
+  height: 25px;
+  font-weight: 700;
+  font-family: Georgia, serif;
+  color: #3d82aa;
+  text-shadow: 1px 1px 1px #fff;
+  text-align: center;
+}
