@@ -91,11 +91,11 @@ function UserReviews({ id, author, authorImage, movieTitle, movieImage, content,
             :
             null
             }
-            <button onClick={toggleDeleteReview}>{canDeleteReview ? "I would Never!" : "Delete Review"}</button>
+            <button onClick={toggleDeleteReview}>{canDeleteReview ? "Im Just Kidding" : "Delete This Review"}</button>
             {canDeleteReview ?
             <div>
-                <h2>This Will Delete Your Account Are You Sure?</h2>
-                <button onClick={handleDeleteReview}>Yes, Delete</button>
+                <h2>This Will Delete Your Crunchy Review, Continue?</h2>
+                <button onClick={handleDeleteReview}>Yes, I Regret What I Said..</button>
             </div>
             :
             null

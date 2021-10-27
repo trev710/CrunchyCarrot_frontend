@@ -19,8 +19,6 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     }
 
     function handleLike(reviewObj){
-        let likesToUpdate = reviewObj.likes
-
         const updateObj = {
             likes: reviewObj.likes + 1
         };
@@ -87,6 +85,11 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
     function handleFollowOtherUser(userToFollow) {
 
+        const templateParams = {
+            followerName: currentUser.username,
+            followeeName: userToFollow.username
+        }
+
         const newFollowerRelationship = {
             follower_id: currentUser.id,
             followee_id: userToFollow.id,
@@ -110,13 +113,13 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
     const allReviews = movieReviews.map((review) => {
         return (
-            <div style={{border: "1px solid black"}} key={review.id} className="movie-reviews">
+            <div style={{border: "2px solid black"}} key={review.id} className="movie-reviews">
                 <h3>Review By: {review.author}</h3>
                 <p>{review.content}</p>
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
                 <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
                 <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
-                <p>{review.likes} likes</p>
+                <p className="num-likes">{review.likes}</p>
             </div>
         )
     })
@@ -127,14 +130,14 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             <img className="movie-show-image" src={image} alt={id}></img>
             <h1 className="movie-show-title" >{title}</h1>
             <h4>{release_year}</h4>
-            <h3>{genre}</h3>
-            <h3>Runtime: {runtime} minutes</h3>
-            <h4>{tagline}</h4>
-            <p>{overview}</p>
+            <h3 classname="show-movie-genre">{genre}</h3>
+            <h3 className="movie-show-runtime">Time Length: {runtime} Minutes</h3>
+            <h4 classname="movie-show-tagline">{tagline}</h4>
+            <p className="movie-para">{overview}</p>
             <form onSubmit={handleSubmitReview}>
                 <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
                 <select onChange={handleRatingChange}>
-                    <option value=''>Give This Movie a Rating</option>
+                    <option value=''>Rate This Movie</option>
                     <option value="1">1</option>
                     <option value="2">2</option>
                     <option value="3">3</option>
@@ -143,7 +146,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
                 </select>
                 <input type="submit" value="Submit" />
             </form>
-            <h4>Other Reviews for {title}</h4>
+            <h4 className="other-reviews">Other Reviews For {title}</h4>
               {allReviews}  
         </div>
     )

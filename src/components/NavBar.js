@@ -12,7 +12,7 @@ function NavBar({ currentUser, resetCurrentUser }) {
       }
 
     return (
-        <div>
+        <div classname="nav-bar">
 
 <img className="app-mascot" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Fwww.clipartkey.com%2Fmpngs%2Fm%2F28-283187_dinosaur-clipart-fat-carrot-cartoon.png&f=1&nofb=1" alt="CC logo"></img>
 <h1 className="app-name"> Crunchy Carrots</h1>
@@ -24,7 +24,7 @@ function NavBar({ currentUser, resetCurrentUser }) {
         {currentUser ? (
         <>
              <NavLink to="/movies/new" className="nav-link">
-            Add a Movie
+            | Add a Movie |
           </NavLink>
           <NavLink to="/profile" className="nav-link">
             Profile
@@ -34,7 +34,7 @@ function NavBar({ currentUser, resetCurrentUser }) {
         ) : (
         <>
           <NavLink to="/signup" className="nav-link">
-            Signup
+          |  Signup  |
           </NavLink>
           <NavLink to="/login" className="nav-link">
           Login

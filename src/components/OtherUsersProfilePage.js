@@ -48,7 +48,7 @@ function OtherUsersProfilePage({ onDeleteFriendship }) {
     return (
         <div>
             <h1>{username}</h1>
-            <button className='following-btn' onClick={handleUnfollowOtherUser} style={{background: '#00b020', boxShadow: "inset 0 1px 0 hsl(0deg 0% 100% / 30%)"}}>Following</button>
+            <button className='following-btn' onClick={handleUnfollowOtherUser} style={{background: '#00b020', boxShadow: "inset 0 1px 0 hsl(0deg 0% 100% / 30%)"}}>Click to Unfollow</button>
             <img className="friend-profile-pic" style={{height: "75px"}} src={avatar} alt="profile-logo"></img>
             <h2>{username}'s Reviews</h2>
             {allOtherUserReviews}

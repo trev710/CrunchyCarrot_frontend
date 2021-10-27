@@ -30,6 +30,7 @@ code {
 
 .app-name {
   /* float: right; */
+  font-style: oblique;
   border: yellow;
   font-family: 'Courier';
   margin-left: 150px;
@@ -46,20 +47,6 @@ code {
 
 
 }
-
-
-/* 
-from Polenta app
-.app {
-  display: grid;
-  grid-template-areas:
-      "header header"
-      "search filter"
-      "favorites-container pickup-container"
-      "history history";
-  grid-template-columns: 1fr 3fr;
-  grid-gap: 20px;
-} */
 
 .app-mascot {
   position: right;
@@ -456,14 +443,14 @@ from Polenta app
   top: -442px;
 }
 .movie-show-runtime {
-  color: #3d82aa;
+  color: greenyellow;
   font: normal normal bold 77px/1 Georgia;
   font-size: 18px;
   font-weight: 500;
-  position: relative;
   left: 25%;
   top: -430px;
 }
+
 .movie-show-overview {
   color: #3d82aa;
   font: normal normal bold 77px/1 Georgia;
@@ -475,8 +462,8 @@ from Polenta app
   width: 60%;
   word-spacing: 8px;
 }
-.movie-show-tagline {
-  color: #3d82aa;
+.movie-show-tagline{
+  color: blue;
   font: Oxygen;
   font-size: 20px;
   font-weight: 900;
@@ -1092,4 +1079,43 @@ from Polenta app
   color: #3d82aa;
   text-shadow: 1px 1px 1px #fff;
   text-align: center;
+}
+
+.tile-title {
+  color: white;
+  font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif
+}
+
+.tile-genre {
+  color: yellow;
+  font-style:italic;
+}
+
+.tile-runtime {
+  color: green;
+  font-style:oblique;
+}
+
+.tile-tagline {
+  font-style: italic;
+
+}
+
+.movie-tile {
+}
+
+.movie-para {
+  font-style: oblique;
+}
+
+.other-reviews{
+  color:blue;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+.show-movie-genre {
+  color: orangered;
+}
+.nav-bar {
+  background-color: orangered;
 }
