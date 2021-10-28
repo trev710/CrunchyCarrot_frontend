@@ -199,6 +199,7 @@ function App() {
           </Route>
         </Switch>
       </Router>
+      <img className="footer-image" src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Flovebackyard.com%2Fwp-content%2Fuploads%2F2017%2F04%2Fharvest-carrots.jpg&f=1&nofb=1" alt="CC footer"></img>
     </div>
   );
 }

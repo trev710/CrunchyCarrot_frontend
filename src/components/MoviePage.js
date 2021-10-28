@@ -121,7 +121,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
                 <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
                 <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
-                <p className="num-likes">{review.likes} Likes</p>
+                <p className="num-likes">{review.likes} Likes ♡</p>
             </div>
         )
     })

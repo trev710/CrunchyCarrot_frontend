@@ -19,6 +19,7 @@ code {
 }
 
 .nav-link {
+  padding-left: 10px;
   color: yellow;
   font-size: 40px;
   font-family: 'Courier', Courier, monospace;
@@ -46,6 +47,13 @@ code {
   /* top: 0;
   left: 0;
   right: 0; */
+}
+
+.footer-image{
+  padding-top: 40px;
+  width:600px;
+  height: 200px;
+  padding-left: 400px;
 }
 
 .app-description {
