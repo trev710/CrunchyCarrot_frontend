@@ -160,7 +160,7 @@ function App() {
           <div className="login-or-signup-prompt">
             <img className="logsignp" src="https://external-content.duckduckgo.com/iu/?u=http%3A%2F%2F25.media.tumblr.com%2F30708b46fac03651f5e3666e8b267c57%2Ftumblr_n221u9ZFnr1riwl6fo3_r1_400.gif&f=1&nofb=1" alt="=giffie" /> 
             {/* https://media1.giphy.com/media/l0ErRtQDgjMtQcjsI/200.gif              backupimage */}
-            <h3>Talk About The Best Films With Your Friends!</h3>
+            <h3 className="foot-description">Talk About The Best Films With Your Friends!</h3>
             <h3>Please Login or Signup</h3>
           </div>
           }

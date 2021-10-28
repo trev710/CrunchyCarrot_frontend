@@ -21,6 +21,7 @@ code {
 .nav-link {
   padding-left: 10px;
   color: yellow;
+  text-shadow: 1px 1px 1px black;
   font-size: 40px;
   font-family: 'Courier', Courier, monospace;
   /* float:left; */
@@ -34,7 +35,7 @@ code {
   /* float: right; */
   /* text-align: center; */
   font-style: oblique;
-  border: yellow;
+  text-shadow: 2px 2px 2px black;
   font-family:Arial,Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-left: 150px;
   margin-left: 10px;
@@ -56,14 +57,21 @@ code {
   padding-left: 400px;
 }
 
+.foot-description {
+  font-family: cursive;
+}
+
 .app-description {
   font-style: oblique;
   /* text-align: center; */
   font-family: cursive;
+   text-shadow: 1px 1px 1px white;
+  font-size: 20px;
+
 }
 
 .app-mascot {
-  position: right;
+  position: center;
   left: 0;
   top: 0;
   height: 150px;
