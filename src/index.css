@@ -20,23 +20,25 @@ code {
 
 .nav-link {
   color: yellow;
-  font-size: 30px;
+  font-size: 40px;
   font-family: 'Courier', Courier, monospace;
-  float: left;
-  text-decoration: none;
+  /* float:left; */
+  text-decoration:lightgreen;
   margin-right: 10px;
-  display: block;
+  /* display: block; */
+  text-align: center;
 }
 
 .app-name {
   /* float: right; */
+  /* text-align: center; */
   font-style: oblique;
   border: yellow;
-  font-family: 'Courier';
+  font-family:Arial,Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
   margin-left: 150px;
   margin-left: 10px;
   margin-bottom: 10px;
-  color: black;
+  color:white;
   font-size: 40px;
   /* height: 100px; */
   width: 100%; /** Use 100% to fill the width of the page **/
@@ -44,14 +46,22 @@ code {
   /* top: 0;
   left: 0;
   right: 0; */
+}
 
-
+.app-description {
+  font-style: oblique;
+  /* text-align: center; */
+  font-family: cursive;
 }
 
 .app-mascot {
   position: right;
   left: 0;
   top: 0;
+  height: 150px;
+}
+.app-mascot-2 {
+
   height: 100px;
 }
 
@@ -396,7 +406,7 @@ code {
   margin: 25px;
   border-radius: 12px;
   width: auto;
-  height: 400px;
+  height: 200px;
   border: 0.5px solid white;
   box-shadow: 0 0 10px 3px rgba(47, 80, 104, 0.91) ;
 }
@@ -425,30 +435,21 @@ code {
 } */ 
 
 .movie-show-year {
-  color: #3d82aa;
-  position: relative;
-  font: normal normal bold 77px/1 Georgia;
-  font-size: 18px;
+  /* color: #3d82aa;
+  /* position: relative; */
+  /* font-size: 18px;
   font-weight: 500;
   left: 25%;
-  top: -400px;
+  top: -400px; */
+  text-align: center;
+  color: blue;
 }
-.movie-show-genre {
-  color: #3d82aa;
-  font: normal normal bold 77px/1 Georgia;
-  font-size: 18px;
-  font-weight: 500;
-  position: relative;
-  left: 33%;
-  top: -442px;
-}
+
 .movie-show-runtime {
   color: greenyellow;
   font: normal normal bold 77px/1 Georgia;
   font-size: 18px;
-  font-weight: 500;
-  left: 25%;
-  top: -430px;
+ text-align: center;
 }
 
 .movie-show-overview {
@@ -463,7 +464,7 @@ code {
   word-spacing: 8px;
 }
 .movie-show-tagline{
-  color: blue;
+  /* color: blue;
   font: Oxygen;
   font-size: 20px;
   font-weight: 900;
@@ -471,8 +472,13 @@ code {
   left: 1.5%;
   top: -300px;
   width: 60%;
-  word-spacing: 8px;
+  word-spacing: 8px; */
+  text-align: center;
 }
+.movie-show-year{
+
+}
+
 #myBtn {
   width: 10%;
   background: #00c030;
@@ -1092,12 +1098,14 @@ code {
 }
 
 .tile-runtime {
-  color: green;
+  color: greenyellow;
   font-style:oblique;
 }
 
 .tile-tagline {
   font-style: italic;
+  color:green
+
 
 }
 
@@ -1106,16 +1114,22 @@ code {
 
 .movie-para {
   font-style: oblique;
+  color:lightgrey;
 }
 
 .other-reviews{
+  text-shadow: palegreen;
+  text-align: center;
   color:blue;
   font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
 }
 
 .show-movie-genre {
-  color: orangered;
+  color: greenyellow;
+  text-align: center;
 }
 .nav-bar {
-  background-color: orangered;
+  text-align: center;
+  align-content: center;
+
 }

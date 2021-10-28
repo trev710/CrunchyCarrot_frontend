@@ -136,7 +136,7 @@ function UserProfile({ currentUser, setCurrentUser, reviews, setReviews, onUpdat
     return (
         <div>
             <h1>Welcome {currentUser.username}!</h1>
-            <img className="profile-pic" style={{height: "75px"}} src={currentUser.avatar}></img>
+            <img className="profile-pic" style={{height: "75px"}} src={currentUser.avatar} alt="pic"></img>
             <button onClick={toggleEditProfile}>{canEditAccount ? "Nevermind" : "Edit Account"}</button>
             {canEditAccount ?
             <div>

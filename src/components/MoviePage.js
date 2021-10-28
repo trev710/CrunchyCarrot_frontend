@@ -21,6 +21,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
     function handleLike(reviewObj){
         const updateObj = {
             likes: reviewObj.likes + 1
+            
         };
 
           fetch(`http://localhost:3001/reviews/${reviewObj.id}`, {
@@ -36,6 +37,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
                 console.log(data)
                
             });
+            alert("What a Crunchy Review!")
     }
 
     useEffect(() => {
@@ -85,10 +87,10 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
 
     function handleFollowOtherUser(userToFollow) {
 
-        const templateParams = {
-            followerName: currentUser.username,
-            followeeName: userToFollow.username
-        }
+        // const templateParams = {
+        //     followerName: currentUser.username,
+        //     followeeName: userToFollow.username
+        // }
 
         const newFollowerRelationship = {
             follower_id: currentUser.id,
@@ -119,7 +121,7 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
                 <img style={{height: "25px"}} src={review.author_image} alt="author-logo" ></img>
                 <button onClick={(e) => handleFollowOtherUser(review.author_object)}>Follow User</button>
                 <button onClick={(e) => handleLike(review)} className="like-button">❤️ Like Review</button>
-                <p className="num-likes">{review.likes}</p>
+                <p className="num-likes">{review.likes} Likes</p>
             </div>
         )
     })
@@ -129,10 +131,10 @@ function MoviePage({ currentUser, onAddReview, reviews, onAddNewFollow, setRevie
             
             <img className="movie-show-image" src={image} alt={id}></img>
             <h1 className="movie-show-title" >{title}</h1>
-            <h4>{release_year}</h4>
-            <h3 classname="show-movie-genre">{genre}</h3>
+            <h4 className="movie-show-year">{release_year}</h4>
+            <h3 className="show-movie-genre">{genre}</h3>
             <h3 className="movie-show-runtime">Time Length: {runtime} Minutes</h3>
-            <h4 classname="movie-show-tagline">{tagline}</h4>
+            <h4 className="movie-show-tagline">{tagline}</h4>
             <p className="movie-para">{overview}</p>
             <form onSubmit={handleSubmitReview}>
                 <textarea name="review" value={newContent} onChange={(e) => setNewContent(e.target.value)}  placeholder="Add a review..." ></textarea>
